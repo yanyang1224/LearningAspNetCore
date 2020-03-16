@@ -3,3 +3,5 @@
 ################################################################################
 
 /MongoDBIntegration/MongoDBDemo/MongoDBDemo/bin/Debug/netcoreapp3.1
+/MongoDBIntegration/MongoDBDemo/.vs/MongoDBDemo
+/MongoDBIntegration/MongoDBDemo/MongoDBDemo/obj

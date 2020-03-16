@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Invengo.Library.ResourceService</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\utility\Invengo.Library.ISBNUtility\Invengo.Library.ISBNUtility.csproj" />
+    <ProjectReference Include="..\Invengo.Library.ResourceService.Domain.Shared\Invengo.Library.ResourceService.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
+    <PackageReference Include="MongoDB.Bson" Version="2.10.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.10.2" />
+    <PackageReference Include="Volo.Abp.Identity.Domain" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.IdentityServer.Domain" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.IdentityServer" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="2.0.1" />
+  </ItemGroup>
+
+</Project>
