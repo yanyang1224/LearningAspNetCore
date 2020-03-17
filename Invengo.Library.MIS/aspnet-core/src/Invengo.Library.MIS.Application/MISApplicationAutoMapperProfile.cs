@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Invengo.Library.MIS.MIS;
 
 namespace Invengo.Library.MIS
 {
@@ -9,6 +10,10 @@ namespace Invengo.Library.MIS
             /* You can configure your AutoMapper mapping configuration here.
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
+
+            CreateMap<Attachment, AttachmentDto>();
+            CreateMap<CreateUpdateAttachmentDto, Attachment>();
+
         }
     }
 }

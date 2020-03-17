@@ -4,8 +4,6 @@ using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.Users.EntityFrameworkCore;
-using Invengo.Library.MIS.RFID;
-using Invengo.Library.MIS.MIS;
 
 namespace Invengo.Library.MIS.EntityFrameworkCore
 {
@@ -16,26 +14,18 @@ namespace Invengo.Library.MIS.EntityFrameworkCore
      * just create a structure like done for AppUser.
      *
      * Don't use this DbContext for database migrations since it does not contain tables of the
-     * used modules (as explained above). See MISMigrationsDbContext for migrations.
+     * used modules (as explained above). See ABPMigrationsDbContext for migrations.
      */
-    [ConnectionStringName("MIS")]
-    public class MISDbContext : AbpDbContext<MISDbContext>
+    [ConnectionStringName("Default")]
+    public class ABPDbContext : AbpDbContext<ABPDbContext>
     {
-        public DbSet<Attachment> Attachments { get; set; }
-
-        public DbSet<News> News { get; set; }
-
-        public DbSet<Activity> Activities { get; set; }
-
-        public DbSet<Template> Templates { get; set; }
-
-        public DbSet<TenantConfig> TenantConfigs { get; set; }
+        public DbSet<AppUser> Users { get; set; }
 
         /* Add DbSet properties for your Aggregate Roots / Entities here.
-         * Also map them inside MISDbContextModelCreatingExtensions.ConfigureMIS
+         * Also map them inside ABPDbContextModelCreatingExtensions.ConfigureABP
          */
 
-        public MISDbContext(DbContextOptions<MISDbContext> options)
+        public ABPDbContext(DbContextOptions<ABPDbContext> options)
             : base(options)
         {
 
@@ -47,10 +37,19 @@ namespace Invengo.Library.MIS.EntityFrameworkCore
 
             /* Configure the shared tables (with included modules) here */
 
+            builder.Entity<AppUser>(b =>
+            {
+                b.ToTable("AbpUsers"); //Sharing the same table "AbpUsers" with the IdentityUser
+                b.ConfigureByConvention();
+                b.ConfigureAbpUser();
 
-            /* Configure your own tables/entities inside the ConfigureMIS method */
+                //Moved customization to a method so we can share it with the ABPMigrationsDbContext class
+                b.ConfigureCustomUserProperties();
+            });
 
-            builder.ConfigureMIS();
+            /* Configure your own tables/entities inside the ConfigureABP method */
+
+            builder.ConfigureABP();
         }
     }
 }

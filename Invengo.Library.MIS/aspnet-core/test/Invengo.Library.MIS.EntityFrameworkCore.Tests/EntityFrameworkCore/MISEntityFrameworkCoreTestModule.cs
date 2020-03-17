@@ -42,11 +42,11 @@ namespace Invengo.Library.MIS.EntityFrameworkCore
             var connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
 
-            var options = new DbContextOptionsBuilder<MISMigrationsDbContext>()
+            var options = new DbContextOptionsBuilder<ABPMigrationsDbContext>()
                 .UseSqlite(connection)
                 .Options;
 
-            using (var context = new MISMigrationsDbContext(options))
+            using (var context = new ABPMigrationsDbContext(options))
             {
                 context.GetService<IRelationalDatabaseCreator>().CreateTables();
             }

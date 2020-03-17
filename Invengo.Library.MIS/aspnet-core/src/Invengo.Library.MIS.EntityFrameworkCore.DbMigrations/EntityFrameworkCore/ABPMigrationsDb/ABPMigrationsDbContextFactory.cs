@@ -7,16 +7,16 @@ namespace Invengo.Library.MIS.EntityFrameworkCore
 {
     /* This class is needed for EF Core console commands
      * (like Add-Migration and Update-Database commands) */
-    public class MISMigrationsDbContextFactory : IDesignTimeDbContextFactory<MISMigrationsDbContext>
+    public class ABPMigrationsDbContextFactory : IDesignTimeDbContextFactory<ABPMigrationsDbContext>
     {
-        public MISMigrationsDbContext CreateDbContext(string[] args)
+        public ABPMigrationsDbContext CreateDbContext(string[] args)
         {
             var configuration = BuildConfiguration();
 
-            var builder = new DbContextOptionsBuilder<MISMigrationsDbContext>()
+            var builder = new DbContextOptionsBuilder<ABPMigrationsDbContext>()
                 .UseSqlServer(configuration.GetConnectionString("Default"));
 
-            return new MISMigrationsDbContext(builder.Options);
+            return new ABPMigrationsDbContext(builder.Options);
         }
 
         private static IConfigurationRoot BuildConfiguration()

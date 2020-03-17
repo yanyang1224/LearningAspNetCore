@@ -17,9 +17,9 @@ namespace Invengo.Library.MIS.EntityFrameworkCore
      * It is a unified model that includes configuration for
      * all used modules and your application.
      */
-    public class MISMigrationsDbContext : AbpDbContext<MISMigrationsDbContext>
+    public class ABPMigrationsDbContext : AbpDbContext<ABPMigrationsDbContext>
     {
-        public MISMigrationsDbContext(DbContextOptions<MISMigrationsDbContext> options) 
+        public ABPMigrationsDbContext(DbContextOptions<ABPMigrationsDbContext> options) 
             : base(options)
         {
 
@@ -49,7 +49,7 @@ namespace Invengo.Library.MIS.EntityFrameworkCore
 
             /* Configure your own tables/entities inside the ConfigureMIS method */
 
-            builder.ConfigureMIS();
+            builder.ConfigureABP();
         }
     }
 }

@@ -29,6 +29,20 @@ namespace Invengo.Library.MIS.EntityFrameworkCore
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            context.Services.AddAbpDbContext<ABPDbContext>(options =>
+            {
+                /* Remove "includeAllEntities: true" to create
+                 * default repositories only for aggregate roots */
+                options.AddDefaultRepositories(includeAllEntities: true);
+            });
+
+            context.Services.AddAbpDbContext<RFIDDbContext>(options =>
+            {
+                /* Remove "includeAllEntities: true" to create
+                 * default repositories only for aggregate roots */
+                options.AddDefaultRepositories(includeAllEntities: true);
+            });
+
             context.Services.AddAbpDbContext<MISDbContext>(options =>
             {
                 /* Remove "includeAllEntities: true" to create

@@ -5,11 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Invengo.Library.MIS.Data;
 using Volo.Abp.DependencyInjection;
 
-namespace Invengo.Library.MIS.EntityFrameworkCore
+namespace Invengo.Library.MIS.EntityFrameworkCore.MIS
 {
     public class EntityFrameworkCoreMISDbSchemaMigrator
         : IMISDbSchemaMigrator, ITransientDependency
     {
+
         private readonly IServiceProvider _serviceProvider;
 
         public EntityFrameworkCoreMISDbSchemaMigrator(
