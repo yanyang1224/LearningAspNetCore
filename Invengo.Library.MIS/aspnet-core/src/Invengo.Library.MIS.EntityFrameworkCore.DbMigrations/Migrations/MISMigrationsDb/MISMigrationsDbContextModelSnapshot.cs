@@ -120,7 +120,6 @@ namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Extension")
-                        .IsRequired()
                         .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
@@ -157,6 +156,70 @@ namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
                     b.HasKey("Id");
 
                     b.ToTable("MisAttachment");
+                });
+
+            modelBuilder.Entity("Invengo.Library.MIS.MIS.Book", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnName("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnName("CreatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnName("DeleterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnName("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnName("ExtraProperties")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnName("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnName("LastModifierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MisBook");
                 });
 
             modelBuilder.Entity("Invengo.Library.MIS.MIS.News", b =>

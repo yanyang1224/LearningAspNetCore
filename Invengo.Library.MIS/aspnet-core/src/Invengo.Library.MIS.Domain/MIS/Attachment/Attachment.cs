@@ -11,6 +11,8 @@ namespace Invengo.Library.MIS.MIS
     [Table("MisAttachment")]
     public class Attachment : FullAuditedEntity<Guid>, IMultiTenant
     {
+        #region 实体
+
         /// <summary>
         /// 名称
         /// </summary>
@@ -26,7 +28,6 @@ namespace Invengo.Library.MIS.MIS
         /// <summary>
         /// 后缀名
         /// </summary>
-        [Required]
         [StringLength(64)]
         public virtual string Extension { get; set; }
 
@@ -55,6 +56,19 @@ namespace Invengo.Library.MIS.MIS
         /// 租户id
         /// </summary>
         public virtual Guid? TenantId { get; set; }
+
+        #endregion
+
+        protected Attachment()
+        {
+
+        }
+
+        public Attachment(Guid id)
+            : base(id)
+        {
+
+        }
 
     }
 }

@@ -9,6 +9,7 @@ namespace Invengo.Library.MIS.RFID
     [Table("duStaff")]
     public class duStaff : Entity<int>
     {
+        #region 实体
         [Column("nStaffID")]
         public override int Id { get; protected set; }
 
@@ -35,5 +36,17 @@ namespace Invengo.Library.MIS.RFID
         public string szMobile { get; set; }
 
         public string szEMail { get; set; }
+        #endregion
+
+        protected duStaff()
+        {
+
+        }
+
+        public duStaff(int id)
+            : base(id)
+        {
+
+        }
     }
 }

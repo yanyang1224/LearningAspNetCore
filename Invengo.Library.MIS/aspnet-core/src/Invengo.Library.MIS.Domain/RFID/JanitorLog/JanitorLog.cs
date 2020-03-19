@@ -9,6 +9,7 @@ namespace Invengo.Library.MIS.RFID
     [Table("JanitorLog")]
     public class JanitorLog : Entity<int>
     {
+        #region 实体
         [Column("nJanitorLogID")]
         public override int Id { get; protected set; }
 
@@ -25,5 +26,17 @@ namespace Invengo.Library.MIS.RFID
         public string szBookIndex { get; set; }
 
         public int? nBookStatus { get; set; }
+        #endregion
+
+        public JanitorLog()
+        {
+
+        }
+
+        public JanitorLog(int id)
+            : base(id)
+        {
+
+        }
     }
 }

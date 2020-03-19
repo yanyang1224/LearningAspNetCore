@@ -9,6 +9,7 @@ namespace Invengo.Library.MIS.RFID
     [Table("DeviceInfo")]
     public class DeviceInfo : Entity<int>
     {
+        #region 实体
         [Column("nDeviceID")]
         public override int Id { get; protected set; }
 
@@ -51,5 +52,17 @@ namespace Invengo.Library.MIS.RFID
         public string szDescription { get; set; }
 
         public bool? bCanPing { get; set; }
+        #endregion
+
+        protected DeviceInfo()
+        {
+
+        }
+
+        public DeviceInfo(int id)
+            : base(id)
+        {
+
+        }
     }
 }

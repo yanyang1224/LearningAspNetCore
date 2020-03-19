@@ -11,6 +11,7 @@ namespace Invengo.Library.MIS.MIS
     [Table("MisActivity")]
     public class Activity : FullAuditedEntity<Guid>, IMultiTenant
     {
+        #region 实体
         /// <summary>
         /// 活动主题
         /// </summary>
@@ -78,5 +79,17 @@ namespace Invengo.Library.MIS.MIS
         public virtual string Remark { get; set; }
 
         public virtual Guid? TenantId { get; set; }
+        #endregion
+
+        protected Activity()
+        {
+
+        }
+
+        public Activity(Guid id)
+            : base(id)
+        {
+
+        }
     }
 }

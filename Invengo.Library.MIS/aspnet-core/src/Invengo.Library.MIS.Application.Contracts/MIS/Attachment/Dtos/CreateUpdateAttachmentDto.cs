@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Volo.Abp.Application.Dtos;
 
 namespace Invengo.Library.MIS.MIS
 {
-    public class CreateUpdateAttachmentDto
+    public class CreateUpdateAttachmentDto : EntityDto<Guid>
     {
         /// <summary>
         /// 名称

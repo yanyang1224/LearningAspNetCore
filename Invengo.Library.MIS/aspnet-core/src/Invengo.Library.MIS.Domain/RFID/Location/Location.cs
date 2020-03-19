@@ -9,6 +9,7 @@ namespace Invengo.Library.MIS.RFID
     [Table("Location")]
     public class Location : Entity<int>
     {
+        #region 实体
         [Column("nID")]
         public override int Id { get; protected set; }
 
@@ -29,5 +30,18 @@ namespace Invengo.Library.MIS.RFID
         public bool? bInitSortOver { get; set; }
 
         public string szMedicalLib { get; set; }
+        #endregion
+
+        protected Location()
+        {
+
+        }
+
+        public Location(int id)
+            : base(id)
+        {
+
+        }
+
     }
 }

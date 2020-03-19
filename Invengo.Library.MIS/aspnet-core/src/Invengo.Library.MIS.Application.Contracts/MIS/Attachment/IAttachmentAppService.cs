@@ -6,8 +6,8 @@ using Volo.Abp.Application.Services;
 
 namespace Invengo.Library.MIS.MIS
 {
-    public interface IAttachmentAppService :
-        ICrudAppService< // Defines CRUD methods
+    public interface IAttachmentAppService
+        : ICrudAppService< // Defines CRUD methods
             AttachmentDto, // Used to show
             Guid, // Primary key
             PagedAndSortedResultRequestDto, // Used for paging/sorting on getting a list of attachment

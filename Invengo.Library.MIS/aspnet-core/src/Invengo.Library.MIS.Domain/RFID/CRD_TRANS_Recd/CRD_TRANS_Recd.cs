@@ -9,6 +9,7 @@ namespace Invengo.Library.MIS.RFID
     [Table("CRD_TRANS_Recd")]
     public class CRD_TRANS_Recd : Entity<int>
     {
+        #region 实体
         [Column("nID")]
         public override int Id { get; protected set; }
 
@@ -59,5 +60,18 @@ namespace Invengo.Library.MIS.RFID
         public string szStaffName { get; set; }
 
         public short nRecordStep { get; set; }
+        #endregion
+
+        protected CRD_TRANS_Recd()
+        {
+
+        }
+
+        public CRD_TRANS_Recd(int id)
+            : base(id)
+        {
+
+        }
+
     }
 }

@@ -3,6 +3,7 @@ using Invengo.Library.MIS.RFID;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.Users;
 
 namespace Invengo.Library.MIS.EntityFrameworkCore

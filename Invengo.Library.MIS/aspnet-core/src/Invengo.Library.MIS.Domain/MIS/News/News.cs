@@ -11,6 +11,7 @@ namespace Invengo.Library.MIS.MIS
     [Table("MisNews")]
     public class News : FullAuditedEntity<Guid>, IMultiTenant
     {
+        #region 实体
         /// <summary>
         /// 新闻类型
         /// </summary>
@@ -94,5 +95,18 @@ namespace Invengo.Library.MIS.MIS
         public virtual string Remark { get; set; }
 
         public virtual Guid? TenantId { get; set; }
+        #endregion
+
+        protected News()
+        {
+
+        }
+
+        public News(Guid id)
+            : base(id)
+        {
+
+        }
+
     }
 }

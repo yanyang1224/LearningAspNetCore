@@ -9,6 +9,7 @@ namespace Invengo.Library.MIS.RFID
     [Table("VerifyIdentity")]
     public class VerifyIdentity : Entity<int>
     {
+        #region 实体
         [Column("nID")]
         public override int Id { get; protected set; }
 
@@ -21,5 +22,18 @@ namespace Invengo.Library.MIS.RFID
         public string CardNumber { get; set; }
 
         public string ReaderName { get; set; }
+        #endregion
+
+        protected VerifyIdentity()
+        {
+
+        }
+
+        public VerifyIdentity(int id)
+            : base(id)
+        {
+
+        }
+
     }
 }

@@ -9,6 +9,7 @@ namespace Invengo.Library.MIS.RFID
     [Table("CardType")]
     public class CardType : Entity<int>
     {
+        #region 实体
         [Column("nCardTypeID")]
         public override int Id { get; protected set; }
 
@@ -31,5 +32,17 @@ namespace Invengo.Library.MIS.RFID
         public string beginTime { get; set; }
 
         public string endTime { get; set; }
+        #endregion
+
+        protected CardType()
+        {
+
+        }
+
+        public CardType(int id)
+            : base(id)
+        {
+
+        }
     }
 }

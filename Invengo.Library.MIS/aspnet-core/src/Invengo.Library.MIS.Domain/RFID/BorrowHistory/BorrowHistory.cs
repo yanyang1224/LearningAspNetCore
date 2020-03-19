@@ -9,6 +9,7 @@ namespace Invengo.Library.MIS.RFID
     [Table("BorrowHistory")]
     public class BorrowHistory : Entity<int>
     {
+        #region 实体
         [Column("nHistoryID")]
         public override int Id { get; protected set; }
  
@@ -43,5 +44,17 @@ namespace Invengo.Library.MIS.RFID
         public string szCheckInfo { get; set; }
 
         public string szCardType { get; set; }
+        #endregion
+
+        protected BorrowHistory()
+        {
+
+        }
+
+        public BorrowHistory(int id)
+            : base(id)
+        {
+
+        }
     }
 }

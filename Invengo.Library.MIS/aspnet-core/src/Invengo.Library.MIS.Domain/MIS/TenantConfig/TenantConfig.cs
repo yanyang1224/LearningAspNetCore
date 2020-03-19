@@ -11,6 +11,7 @@ namespace Invengo.Library.MIS.MIS
     [Table("MisTenantConfig")]
     public class TenantConfig : FullAuditedEntity<Guid>, IMultiTenant
     {
+        #region 实体
         /// <summary>
         /// 图书馆名称
         /// </summary>
@@ -50,5 +51,17 @@ namespace Invengo.Library.MIS.MIS
         public virtual Template Template { get; set; }
 
         public virtual Guid? TenantId { get; set; }
+        #endregion
+
+        protected TenantConfig()
+        {
+
+        }
+
+        public TenantConfig(Guid id)
+            : base(id)
+        {
+
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace Invengo.Library.MIS.RFID
     [Table("Reader")]
     public class Reader : Entity<string>
     {
+        #region 实体
         [Column("szReaderID")]
         public override string Id { get; protected set; }
 
@@ -71,5 +72,18 @@ namespace Invengo.Library.MIS.RFID
         public string szMajorNameSub { get; set; }
 
         public string szProRanks { get; set; }
+        #endregion
+
+        protected Reader()
+        {
+
+        }
+
+        public Reader(string id)
+            : base(id)
+        {
+
+        }
+
     }
 }

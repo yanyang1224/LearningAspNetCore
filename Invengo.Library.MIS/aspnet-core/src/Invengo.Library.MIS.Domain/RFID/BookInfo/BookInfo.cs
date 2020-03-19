@@ -9,6 +9,7 @@ namespace Invengo.Library.MIS.RFID
     [Table("BookInfo")]
     public class BookInfo : Entity<string>
     {
+        #region 实体
         [Column("szBookID")]
         public override string Id { get; protected set; }
 
@@ -101,5 +102,17 @@ namespace Invengo.Library.MIS.RFID
         public bool? bBookLabelChecked { get; set; }
 
         public int? bLostBookFlag { get; set; }
+        #endregion
+
+        protected BookInfo()
+        {
+
+        }
+
+        public BookInfo(string id)
+            : base(id)
+        {
+
+        }
     }
 }
