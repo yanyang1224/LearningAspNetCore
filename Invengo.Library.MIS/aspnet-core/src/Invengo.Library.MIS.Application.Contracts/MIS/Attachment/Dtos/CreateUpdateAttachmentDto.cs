@@ -31,21 +31,5 @@ namespace Invengo.Library.MIS.MIS
         /// 附件类型
         /// </summary>
         public virtual AttachmentApplyType AttachmentApplyType { get; set; }
-
-        /// <summary>
-        /// 排序代码
-        /// </summary>
-        public virtual int SortCode { get; set; }
-
-        /// <summary>
-        /// 附加状态
-        /// </summary>
-        public virtual Status Status { get; set; }
-
-        /// <summary>
-        /// 备注
-        /// </summary>
-        [StringLength(256)]
-        public virtual string Remark { get; set; }
     }
 }

@@ -17,8 +17,11 @@ namespace Invengo.Library.MIS
             CreateMap<News, NewsDto>();
             CreateMap<CreateUpdateNewsDto, News>();
 
-            CreateMap<Attachment, AttachmentDto>();
-            CreateMap<CreateUpdateAttachmentDto, Attachment>();
+            CreateMap<Activity, ActivityDto>();
+            CreateMap<CreateUpdateActivityDto, Activity>();
+
+            CreateMap<MediaInfo, MediaInfoDto>();
+            CreateMap<CreateUpdateMediaInfoDto, MediaInfo>();
 
             CreateMap<Template, TemplateDto>();
             CreateMap<CreateUpdateTemplateDto, Template>();

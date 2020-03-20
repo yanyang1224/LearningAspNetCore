@@ -29,30 +29,41 @@ namespace Invengo.Library.MIS.EntityFrameworkCore
             Check.NotNull(builder, nameof(builder));
 
             /* Configure your own tables/entities inside here */
-            
+
             builder.Entity<Attachment>(b =>
             {
                 b.ToTable("MisAttachment", MISConsts.DbSchema);
+                b.ConfigureByConvention();
+            });
+
+            builder.Entity<MediaInfo>(b =>
+            {
+                b.ToTable("MisMediaInfo", MISConsts.DbSchema);
+                b.ConfigureByConvention();
             });
 
             builder.Entity<Activity>(b =>
             {
                 b.ToTable("MisActivity", MISConsts.DbSchema);
+                b.ConfigureByConvention();
             });
 
             builder.Entity<News>(b =>
             {
                 b.ToTable("MisNews", MISConsts.DbSchema);
+                b.ConfigureByConvention();
             });
 
             builder.Entity<Template>(b =>
             {
                 b.ToTable("MisTemplate", MISConsts.DbSchema);
+                b.ConfigureByConvention();
             });
 
             builder.Entity<TenantConfig>(b =>
             {
                 b.ToTable("MisTenantConfig", MISConsts.DbSchema);
+                b.ConfigureByConvention();
             });
 
             //builder.Entity<YourEntity>(b =>

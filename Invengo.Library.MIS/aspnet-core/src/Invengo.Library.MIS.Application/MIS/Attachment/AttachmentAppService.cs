@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
@@ -34,48 +36,67 @@ namespace Invengo.Library.MIS.MIS
             _config = config;
         }
 
+        #region 获取数据
+
         /// <summary>
-        /// 上传图片
+        /// 返回文件
         /// </summary>
-        /// <param name="file"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Guid> UploadPicture([Required]IFormFile file)
+        public async Task<FileContentResult> GetFileAsync(Guid id)
         {
-            if (!file.ContentType.StartsWith("image", StringComparison.CurrentCultureIgnoreCase))
+            var attachment = await _attachmentRepository.GetAsync(id);
+            if(attachment == null)
             {
-                throw new UserFriendlyException("仅支持上传JPG、JPEG、PNG等图片文件");
+                throw new UserFriendlyException("未找到附件信息");
             }
-            return await UploadFile(new UploadFileInput() { 
-                File=file,
-                AttachmentApplyType=AttachmentApplyType.Picture
-            });
+            var path = _config["AttachmentPath"] + attachment.AttachmentApplyType + "/" + attachment.Name;
+            if(!new FileInfo(path).Exists)
+            {
+                throw new UserFriendlyException("文件已丢失");
+            }
+            var file = new FileContentResult(File.ReadAllBytes(path), attachment.Extension)
+            {
+                FileDownloadName = attachment.Name
+            };
+            return file;
+
         }
 
         /// <summary>
-        /// 上传视频
+        /// 返回文件流
         /// </summary>
-        /// <param name="file"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Guid> UploadVideo([Required]IFormFile file)
+        public async Task<FileStream> GetStreamAsync(Guid id)
         {
-            if (!file.ContentType.StartsWith("video", StringComparison.CurrentCultureIgnoreCase))
+            var attachment = await _attachmentRepository.GetAsync(id);
+            if (attachment == null)
             {
-                throw new UserFriendlyException("仅支持上传avi、wma、MP4等图片文件");
+                throw new UserFriendlyException("未找到附件信息");
             }
-            return await UploadFile(new UploadFileInput()
+            var path = _config["AttachmentPath"] + attachment.AttachmentApplyType + "/" + attachment.Name;
+            if (!new FileInfo(path).Exists)
             {
-                File = file,
-                AttachmentApplyType = AttachmentApplyType.Video
-            });
+                throw new UserFriendlyException("文件已丢失");
+            }
+            return File.OpenRead(path);
         }
+
+        #endregion
+
+
+        #region 提交数据
 
         /// <summary>
         /// 上传文件
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<Guid> UploadFile([FromForm]UploadFileInput input)
+        public async Task<AttachmentDto> UploadFile([FromForm]UploadFileInput input)
         {
+            CheckContentType(input);
+
             var attachment = new Attachment(GuidGenerator.Create())
             {
                 Name = input.File.FileName,
@@ -97,8 +118,35 @@ namespace Invengo.Library.MIS.MIS
             }
 
             var result = await _attachmentRepository.InsertAsync(attachment);
-            return result.Id;
+            return ObjectMapper.Map<Attachment,AttachmentDto>(result);
         }
 
+        /// <summary>
+        /// 检查类型
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        protected void CheckContentType(UploadFileInput input)
+        {
+            switch (input.AttachmentApplyType)
+            {
+                case AttachmentApplyType.Picture:
+                case AttachmentApplyType.Logo:
+                    if (!input.File.ContentType.StartsWith("image", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        throw new UserFriendlyException("仅支持上传JPG、JPEG、PNG等图片文件");
+                    }
+                    break;
+                case AttachmentApplyType.Video:
+                    if (!input.File.ContentType.StartsWith("video", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        throw new UserFriendlyException("仅支持上传avi、wma、MP4等图片文件");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        #endregion
     }
 }

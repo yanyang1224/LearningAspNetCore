@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
 {
     [DbContext(typeof(MISMigrationsDbContext))]
-    [Migration("20200317102720_init_mis")]
-    partial class init_mis
+    [Migration("20200319110730_add-att")]
+    partial class addatt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,7 +122,6 @@ namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Extension")
-                        .IsRequired()
                         .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
@@ -137,6 +136,53 @@ namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
 
                     b.Property<long>("Length")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MisAttachment");
+                });
+
+            modelBuilder.Entity("Invengo.Library.MIS.MIS.MediaInfo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte>("MediaType")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -158,7 +204,7 @@ namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("MisAttachment");
+                    b.ToTable("MisMediaInfo");
                 });
 
             modelBuilder.Entity("Invengo.Library.MIS.MIS.News", b =>
@@ -252,6 +298,11 @@ namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
+
                     b.Property<string>("Config")
                         .HasColumnType("nvarchar(max)");
 
@@ -295,7 +346,7 @@ namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("Thumbnail")
+                    b.Property<Guid?>("Thumbnail")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -369,9 +420,7 @@ namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
                 {
                     b.HasOne("Invengo.Library.MIS.MIS.Attachment", "Attachment")
                         .WithMany()
-                        .HasForeignKey("Thumbnail")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Thumbnail");
                 });
 
             modelBuilder.Entity("Invengo.Library.MIS.MIS.TenantConfig", b =>

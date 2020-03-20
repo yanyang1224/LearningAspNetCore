@@ -8,8 +8,8 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Invengo.Library.MIS.MIS
 {
-    public class TemplateAppService
-        : CrudAppService<
+    public class TemplateAppService : 
+        CrudAppService<
             Template,
             TemplateDto,
             Guid,

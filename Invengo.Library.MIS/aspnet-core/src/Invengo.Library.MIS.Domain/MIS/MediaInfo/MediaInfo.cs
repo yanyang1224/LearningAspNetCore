@@ -8,11 +8,10 @@ using Volo.Abp.MultiTenancy;
 
 namespace Invengo.Library.MIS.MIS
 {
-    [Table("MisAttachment")]
-    public class Attachment : FullAuditedEntity<Guid>, IMultiTenant
+    [Table("MisMediaInfo")]
+    public class MediaInfo : FullAuditedEntity<Guid>, IMultiTenant
     {
         #region 实体
-
         /// <summary>
         /// 名称
         /// </summary>
@@ -21,20 +20,31 @@ namespace Invengo.Library.MIS.MIS
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// 字节数
+        /// 类型
         /// </summary>
-        public virtual long Length { get; set; }
+        public virtual MediaType MediaType { get; set; }
 
         /// <summary>
-        /// 后缀名
+        /// 排序代码
         /// </summary>
-        [StringLength(64)]
-        public virtual string Extension { get; set; }
+        public virtual int SortCode { get; set; }
 
         /// <summary>
-        /// 附件类型
+        /// 状态
         /// </summary>
-        public virtual AttachmentApplyType AttachmentApplyType { get; set; }
+        public virtual Status Status { get; set; }
+
+        /// <summary>
+        /// 描述
+        /// </summary>
+        [StringLength(256)]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [StringLength(256)]
+        public virtual string Remark { get; set; }
 
         /// <summary>
         /// 租户id
@@ -43,12 +53,12 @@ namespace Invengo.Library.MIS.MIS
 
         #endregion
 
-        protected Attachment()
+        protected MediaInfo()
         {
 
         }
 
-        public Attachment(Guid id)
+        public MediaInfo(Guid id)
             : base(id)
         {
 

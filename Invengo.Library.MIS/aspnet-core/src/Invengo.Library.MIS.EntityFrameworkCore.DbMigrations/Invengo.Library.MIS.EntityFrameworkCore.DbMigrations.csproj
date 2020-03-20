@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\MISMigrationsDb\20200319094749_init-mis.cs" />
+    <Compile Remove="Migrations\MISMigrationsDb\20200319094749_init-mis.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Invengo.Library.MIS.EntityFrameworkCore\Invengo.Library.MIS.EntityFrameworkCore.csproj" />
   </ItemGroup>
 

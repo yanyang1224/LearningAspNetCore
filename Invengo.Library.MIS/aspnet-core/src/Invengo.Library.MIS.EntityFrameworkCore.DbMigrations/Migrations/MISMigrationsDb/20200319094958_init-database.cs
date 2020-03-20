@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
 {
-    public partial class init_mis : Migration
+    public partial class initdatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,23 +44,41 @@ namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
                     Id = table.Column<Guid>(nullable: false),
                     CreationTime = table.Column<DateTime>(nullable: false),
                     CreatorId = table.Column<Guid>(nullable: true),
+                    Name = table.Column<string>(maxLength: 256, nullable: false),
+                    Length = table.Column<long>(nullable: false),
+                    Extension = table.Column<string>(maxLength: 64, nullable: true),
+                    AttachmentApplyType = table.Column<byte>(nullable: false),
+                    Remark = table.Column<string>(nullable: true),
+                    TenantId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MisAttachment", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MisMediaInfo",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorId = table.Column<Guid>(nullable: true),
                     LastModificationTime = table.Column<DateTime>(nullable: true),
                     LastModifierId = table.Column<Guid>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterId = table.Column<Guid>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 256, nullable: false),
-                    Length = table.Column<long>(nullable: false),
-                    Extension = table.Column<string>(maxLength: 64, nullable: false),
-                    AttachmentApplyType = table.Column<byte>(nullable: false),
+                    MediaType = table.Column<byte>(nullable: false),
                     SortCode = table.Column<int>(nullable: false),
                     Status = table.Column<byte>(nullable: false),
+                    Description = table.Column<string>(maxLength: 256, nullable: true),
                     Remark = table.Column<string>(maxLength: 256, nullable: true),
                     TenantId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MisAttachment", x => x.Id);
+                    table.PrimaryKey("PK_MisMediaInfo", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -172,6 +190,9 @@ namespace Invengo.Library.MIS.Migrations.MISMigrationsDb
         {
             migrationBuilder.DropTable(
                 name: "MisActivity");
+
+            migrationBuilder.DropTable(
+                name: "MisMediaInfo");
 
             migrationBuilder.DropTable(
                 name: "MisNews");

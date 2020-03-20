@@ -12,6 +12,7 @@ namespace Invengo.Library.MIS.MIS
     public class Template : FullAuditedEntity<Guid>, IMultiTenant
     {
         #region 实体
+
         /// <summary>
         /// 模板名称
         /// </summary>
@@ -22,7 +23,7 @@ namespace Invengo.Library.MIS.MIS
         /// <summary>
         /// 缩略图附件id
         /// </summary>
-        public virtual Guid Thumbnail { get; set; }
+        public virtual Guid? Thumbnail { get; set; }
 
         [ForeignKey("Thumbnail")]
         public virtual Attachment Attachment { get; set; }
@@ -57,10 +58,10 @@ namespace Invengo.Library.MIS.MIS
 
         }
 
-        public Template(Guid id)
+        public Template(Guid id,string name)
             : base(id)
         {
-
+            Name = name;
         }
     }
 }

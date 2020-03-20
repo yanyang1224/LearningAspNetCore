@@ -74,5 +74,7 @@ namespace Invengo.Library.MIS.MIS
         /// 备注
         /// </summary>
         public virtual string Remark { get; set; }
+
+        public virtual Guid? TenantId { get; set; }
     }
 }

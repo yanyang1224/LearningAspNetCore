@@ -23,6 +23,8 @@ namespace Invengo.Library.MIS.EntityFrameworkCore
     {
         public DbSet<Attachment> Attachments { get; set; }
 
+        public DbSet<MediaInfo> MediaInfos { get; set; }
+
         public DbSet<News> News { get; set; }
 
         public DbSet<Activity> Activities { get; set; }

@@ -37,5 +37,7 @@ namespace Invengo.Library.MIS.MIS
         /// </summary>
         public virtual Guid TemplateId { get; set; }
 
+
+        public virtual Guid? TenantId { get; set; }
     }
 }
