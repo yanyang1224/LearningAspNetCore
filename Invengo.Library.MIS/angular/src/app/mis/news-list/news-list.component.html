@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col col-md-6">
+                <h5 class="card-title">
+                    {{ "::Menu:News" | abpLocalization }}
+                </h5>
+            </div>
+            <div class="text-right col col-md-6"></div>
+        </div>
+    </div>
+    <div class="card-body">
+        <abp-table
+            [value]="news$ | async"
+            [abpLoading]="loading"
+            [headerTemplate]="tableHeader"
+            [bodyTemplate]="tableBody"
+            [rows]="10"
+            [scrollable]="true"
+        ></abp-table>
+        <ng-template #tableHeader>
+            <tr>
+                <th>{{ "::Type" | abpLocalization }}</th>
+                <th>{{ "::Title" | abpLocalization }}</th>
+                <th>{{ "::Author" | abpLocalization }}</th>
+                <th>{{ "::Editor" | abpLocalization }}</th>
+                <th>{{ "::Tags" | abpLocalization }}</th>
+                <th>{{ "::Description" | abpLocalization }}</th>
+                <th>{{ "::SourcesName" | abpLocalization }}</th>
+                <th>{{ "::SourcesAddress" | abpLocalization }}</th>
+                <th>{{ "::ReleaseTime" | abpLocalization }}</th>
+                <th>{{ "::SortCode" | abpLocalization }}</th>
+                <th>{{ "::Status" | abpLocalization }}</th>
+                <th>{{ "::Remark" | abpLocalization }}</th>
+            </tr>
+        </ng-template>
+        <ng-template #tableBody let-data>
+            <tr>
+                <th>{{ newsType[data.type] }}</th>
+                <th>{{ data.title }}</th>
+                <th>{{ data.author }}</th>
+                <th>{{ data.editor }}</th>
+                <th>{{ data.tags }}</th>
+                <th>{{ data.description }}</th>
+                <th>{{ data.sourcesName }}</th>
+                <th>{{ data.sourcesAddress }}</th>
+                <th>{{ data.releaseTime | date }}</th>
+                <th>{{ data.sortCode }}</th>
+                <th>{{ data.status }}</th>
+                <th>{{ data.remark }}</th>
+            </tr>
+        </ng-template>
+    </div>
+</div>

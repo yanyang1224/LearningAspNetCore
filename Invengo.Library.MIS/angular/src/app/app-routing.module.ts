@@ -27,7 +27,8 @@ const routes: Routes = [
   {
     path: 'setting-management',
     loadChildren: () => import('@abp/ng.setting-management').then(m => m.SettingManagementModule)
-  }
+  },
+  { path: 'mis', loadChildren: () => import('./mis/mis.module').then(m => m.MisModule) }
 ];
 
 @NgModule({
