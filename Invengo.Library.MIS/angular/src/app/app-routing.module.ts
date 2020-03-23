@@ -28,7 +28,15 @@ const routes: Routes = [
     path: 'setting-management',
     loadChildren: () => import('@abp/ng.setting-management').then(m => m.SettingManagementModule)
   },
-  { path: 'mis', loadChildren: () => import('./mis/mis.module').then(m => m.MisModule) }
+  {
+    path: 'mis',
+    loadChildren: () => import('./mis/mis.module').then(m => m.MisModule),
+    data: {
+      routes: {
+        name: '::Menu:News'
+      } as ABP.Route
+    }
+  }
 ];
 
 @NgModule({

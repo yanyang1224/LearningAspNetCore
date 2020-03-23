@@ -1,8 +1,26 @@
-﻿{
+{
   "culture": "tr",
   "texts": {
     "Menu:Home": "Ana sayfa",
     "Welcome": "Hoşgeldiniz",
-    "LongWelcomeMessage": "Uygulamaya hoşgeldiniz. Bu, ABP framework'ü üzerine bina edilmiş bir başlangıç projesidir. Daha fazla bilgi için abp.io adresini ziyaret edebilirsiniz."
+    "LongWelcomeMessage": "Uygulamaya hoşgeldiniz. Bu, ABP framework'ü üzerine bina edilmiş bir başlangıç projesidir. Daha fazla bilgi için abp.io adresini ziyaret edebilirsiniz.",
+    "Menu:Activity": "MenuActivity",
+    "Activity": "Activity",
+    "ActivitySubject": "ActivitySubject",
+    "ActivityBeginTime": "ActivityBeginTime",
+    "ActivityEndTime": "ActivityEndTime",
+    "ActivityAddress": "ActivityAddress",
+    "ActivityCrowd": "ActivityCrowd",
+    "ActivitySortCode": "ActivitySortCode",
+    "ActivityStatus": "ActivityStatus",
+    "ActivityDescription": "ActivityDescription",
+    "ActivitySponsor": "ActivitySponsor",
+    "ActivityOrganizer": "ActivityOrganizer",
+    "ActivityRemark": "ActivityRemark",
+    "ActivityTenantId": "ActivityTenantId",
+    "CreateActivity": "CreateActivity",
+    "EditActivity": "EditActivity",
+    "ActivityDeletionConfirmationMessage": "Are you sure to delete the activity {0}?",
+    "SuccessfullyDeleted": "Successfully deleted"
   }
 }

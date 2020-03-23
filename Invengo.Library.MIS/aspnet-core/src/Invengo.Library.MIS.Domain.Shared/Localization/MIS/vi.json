@@ -3,6 +3,24 @@
   "texts": {
     "Menu:Home": "Trang chủ",
     "Welcome": "Chào mừng bạn",
-    "LongWelcomeMessage": "Chào mừng bạn đến ứng dụng. Đây là một dự án khởi nghiệp dựa trên khung ABP. Để biết thêm thông tin, hãy truy cập abp.io."
+    "LongWelcomeMessage": "Chào mừng bạn đến ứng dụng. Đây là một dự án khởi nghiệp dựa trên khung ABP. Để biết thêm thông tin, hãy truy cập abp.io.",
+    "Menu:Activity": "MenuActivity",
+    "Activity": "Activity",
+    "ActivitySubject": "ActivitySubject",
+    "ActivityBeginTime": "ActivityBeginTime",
+    "ActivityEndTime": "ActivityEndTime",
+    "ActivityAddress": "ActivityAddress",
+    "ActivityCrowd": "ActivityCrowd",
+    "ActivitySortCode": "ActivitySortCode",
+    "ActivityStatus": "ActivityStatus",
+    "ActivityDescription": "ActivityDescription",
+    "ActivitySponsor": "ActivitySponsor",
+    "ActivityOrganizer": "ActivityOrganizer",
+    "ActivityRemark": "ActivityRemark",
+    "ActivityTenantId": "ActivityTenantId",
+    "CreateActivity": "CreateActivity",
+    "EditActivity": "EditActivity",
+    "ActivityDeletionConfirmationMessage": "Are you sure to delete the activity {0}?",
+    "SuccessfullyDeleted": "Successfully deleted"
   }
 }

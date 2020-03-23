@@ -3,10 +3,15 @@ import { GetNews } from '../actions/news.actions';
 import { News } from '../models/news';
 import { NewsService } from '../../mis/shared/news.service';
 import { tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
 @State<News.State> ({
   name: 'NewsState',
   defaults: { news: {} } as News.State
+})
+
+@Injectable({
+  providedIn: 'root'
 })
 export class NewsState {
   @Selector()

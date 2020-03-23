@@ -23,7 +23,7 @@ export namespace News {
     content: string,
     remark: string,
     tenantId: string,
-    isDeleted: boolean,
+    isDeleted: string,
     deleterId: string,
     deletionTime: string,
     lastModificationTime: string,
